@@ -1,0 +1,25 @@
+{
+    "name": "buonzz/composer-library-template",
+    "description": "PHP lib to communicate with onesixty API",
+    "keywords": ["template", "composer", "package"],
+    "license": "DBAD",
+    "authors": [
+        {
+            "name": "Quentin Rasidy",
+            "email": "quentin.rasidy@gmail.com"
+        }
+    ],
+    "type": "project",
+    "require": {
+        "php": ">=7.1",
+        "guzzlehttp/guzzle": "~6.0"
+    },
+    "require-dev": {
+		"phpunit/phpunit": "6.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Quentinrasidy\\Onesixty\\": "src"
+        }
+    }
+}
