@@ -50,7 +50,3 @@ try{
 ## Authors
 
 [Quentin Rasidy](https://www.linkedin.com/in/quentinrasidy/)
-
-## License
-
-This project is licensed under the Apache2 License - see the [LICENSE.md](LICENSE.md) file for details
