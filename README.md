@@ -22,7 +22,7 @@ PHP Composer
 
 The recipients should be an array, containing a dictionnary with two keys "name" and "phone" :
 
-```
+```php
 $recipients = [];
 
 $recipient1 = array("name" => 'Quentin', "phone" => '0495345512');
@@ -31,8 +31,8 @@ $recipient2 = array("name" => 'Baptiste', "phone" => '0497442828');
 array_push($recipients,$recipient1);
 array_push($recipients,$recipient2);
 
-//Create the SMS object
 try{
+    //Create the SMS object
     $sms = new Quentinrasidy\Onesixty\Sms;
 
     //Set the content and the recipients
