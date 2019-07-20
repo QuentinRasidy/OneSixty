@@ -12,6 +12,11 @@ use PHPUnit\Framework\TestCase;
 class SmsTest extends TestCase
 {
     
+
+
+  /*
+  ======VALID TESTS======
+  */
   public function testIsThereAnySyntaxError()
   {
 	$var = new Quentinrasidy\Onesixty\Sms;
@@ -30,7 +35,12 @@ class SmsTest extends TestCase
   public function testSetRecipients(){
     $recipients = [];
 
-    array_push($recipients,'0485346512');
+    $recipient1 = array(
+      "name" => 'Quentin',
+      "phone" => '0495346512'
+    );
+
+    array_push($recipients,$recipient1);
 
     $s = new Quentinrasidy\Onesixty\Sms;
 
@@ -39,6 +49,17 @@ class SmsTest extends TestCase
     $this->assertTrue(is_object($test));
 
     unset($var);
+  }
+
+  
+
+  public function testGetStatus(){
+    $s = new Quentinrasidy\Onesixty\Sms;
+    try{
+      $this->assertTrue(is_numeric($s->authenticate('biboubier@gmail.com','wiipower22')->getStatus(3)));
+    }catch(Quentinrasidy\Onesixty\SmsException $e){
+      $this->assertTrue(false,$e->getMessage());
+    }
   }
 
   public function testSendSms(){
@@ -60,7 +81,7 @@ class SmsTest extends TestCase
     $s = new Quentinrasidy\Onesixty\Sms;
     try{
       $this->assertTrue(
-        $s->authenticate('backend@gmail.com','bibibibi')
+        $s->authenticate('biboubier@gmail.com','wiipower22')
         ->setRecipients($recipients)
         ->setContent('bidzuhdhuduhqdzuzdquhhuhuon')
         ->send()
@@ -70,4 +91,42 @@ class SmsTest extends TestCase
       $this->assertFalse(true,$e->getMessage());
     }
   }
+
+
+  /*
+  ======FAILING TESTS======
+  */
+
+  //Fail recipient
+  public function testFailSetRecipient()
+  {
+    $recipients = [];
+
+    $recipient1 = array(
+      "name" => 'Quentin',
+      "phone" => '04953465512'
+    );
+
+    $recipient2 = array(
+      "name" => 'Laetitia',
+      "phone" => '0497442828'
+    );
+
+    array_push($recipients,$recipient1);
+    array_push($recipients,$recipient2);
+
+    $s = new Quentinrasidy\Onesixty\Sms;
+    try{
+        $s->authenticate('biboubier@gmail.com','wiipower22')
+        ->setRecipients($recipients);
+      
+    }catch(Quentinrasidy\Onesixty\SmsException $e){
+      $this->assertFalse(true,$e->getMessage());
+    }
+
+  }
+
+
+  //Trying to get status of an SMS that does not belong to us
+
 }
