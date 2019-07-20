@@ -1,5 +1,5 @@
 {
-    "name": "buonzz/composer-library-template",
+    "name": "quentinrasidy/onesixty",
     "description": "PHP lib to communicate with onesixty API",
     "keywords": ["template", "composer", "package"],
     "license": "DBAD",
