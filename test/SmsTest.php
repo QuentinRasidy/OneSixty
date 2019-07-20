@@ -56,7 +56,7 @@ class SmsTest extends TestCase
   public function testGetStatus(){
     $s = new Quentinrasidy\Onesixty\Sms;
     try{
-      $this->assertTrue(is_numeric($s->authenticate('biboubier@gmail.com','wiipower22')->getStatus(3)));
+      $this->assertTrue(is_numeric($s->authenticate('xxxxx@gmail.com','xxxxxx')->getStatus(3)));
     }catch(Quentinrasidy\Onesixty\SmsException $e){
       $this->assertTrue(false,$e->getMessage());
     }
@@ -71,7 +71,7 @@ class SmsTest extends TestCase
     );
 
     $recipient2 = array(
-      "name" => 'Laetitia',
+      "name" => 'Gerard',
       "phone" => '0497442828'
     );
 
@@ -81,7 +81,7 @@ class SmsTest extends TestCase
     $s = new Quentinrasidy\Onesixty\Sms;
     try{
       $this->assertTrue(
-        $s->authenticate('biboubier@gmail.com','wiipower22')
+        $s->authenticate('xxxxx@gmail.com','xxxxx')
         ->setRecipients($recipients)
         ->setContent('bidzuhdhuduhqdzuzdquhhuhuon')
         ->send()
@@ -108,7 +108,7 @@ class SmsTest extends TestCase
     );
 
     $recipient2 = array(
-      "name" => 'Laetitia',
+      "name" => 'Gerard',
       "phone" => '0497442828'
     );
 
@@ -117,7 +117,7 @@ class SmsTest extends TestCase
 
     $s = new Quentinrasidy\Onesixty\Sms;
     try{
-        $s->authenticate('biboubier@gmail.com','wiipower22')
+        $s->authenticate('xxxx@gmail.com','xxxx')
         ->setRecipients($recipients);
       
     }catch(Quentinrasidy\Onesixty\SmsException $e){

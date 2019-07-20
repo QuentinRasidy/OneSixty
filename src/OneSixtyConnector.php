@@ -14,7 +14,7 @@ class OneSixtyConnector{
    /**  @var string $m_SampleProperty define here what this variable is for, do this for every instance variable */
    protected $username ='';
    protected $password = '';
-   protected $base_uri = 'https://api.test/';
+   protected $base_uri = 'https://oneforthy.be/';
 
     public function authenticate($username, $password){
         $this->username = $username;
