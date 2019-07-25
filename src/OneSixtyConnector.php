@@ -4,7 +4,7 @@
 class OneSixtyConnector{
 
    protected $token ='';
-   protected $base_uri = 'https://api.test/';
+   protected $base_uri = 'https://oneforthy.be/';
 
     public function authenticate($token){
         $this->token = $token;
@@ -27,8 +27,8 @@ class OneSixtyConnector{
         curl_setopt($ch, CURLOPT_TIMEOUT,10);
         
         //ONLY ON LOCAL
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        //curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+        //curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 
         return $ch;
     }
