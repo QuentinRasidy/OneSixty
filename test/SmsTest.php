@@ -54,7 +54,8 @@ class SmsTest extends TestCase
   public function testSend(){
     $recipients = [];
 
-    array_push($recipients,'0485346512');
+    array_push($recipients,'0482234222');
+    array_push($recipients,'0492845355');
 
     try{
       $s = new Quentinrasidy\Onesixty\Sms;

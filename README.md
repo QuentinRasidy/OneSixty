@@ -25,25 +25,18 @@ The recipients should be an array, containing a dictionnary with two keys "name"
 ```php
 $recipients = [];
 
-$recipient1 = array("name" => 'Quentin', "phone" => '0495345512');
-$recipient2 = array("name" => 'Baptiste', "phone" => '0497442828');
-
-array_push($recipients,$recipient1);
-array_push($recipients,$recipient2);
+array_push($recipients,'0482234222');
+array_push($recipients,'0492845355');
 
 try{
-    //Create the SMS object
-    $sms = new Quentinrasidy\Onesixty\Sms;
+    //Create the sms
+    $s = new Quentinrasidy\Onesixty\Sms;
 
-    //Set the content and the recipients
-    $sms = $sms->setContent('my super content')
-    ->setRecipients($recipients);
+    //Set the content; the recipients; authenticate and send
+    $s = $s->setContent('this is a super sms content')->authenticate('n0LPEy1y0GL3nmx7xt2g6xxOLSXqcntiHxCPzjSTgaNEaS9odja2aWYFOVuM')->send();
 
-    //Authenticate and send
-    $sms->authenticate('monAddresse@something.something','monSuperPassword')
-    ->send();
 }catch(Quentinrasidy\Onesixty\SmsException $e){
-    //Treat the exception here
+      //Treat the exception here
 }
 ```
 
