@@ -1,25 +1,35 @@
 <?php namespace Quentinrasidy\Onesixty;
 
-use GuzzleHttp\Client;
-/**
-*  A sample class
-*
-*  Use this section to define what this class is doing, the PHPDocumentator will use this
-*  to automatically generate an API documentation using this information.
-*
-*  @author Quentin Rasidy
-*/
+/*  @author Quentin Rasidy*/
 class OneSixtyConnector{
 
-   /**  @var string $m_SampleProperty define here what this variable is for, do this for every instance variable */
-   protected $username ='';
-   protected $password = '';
-   protected $base_uri = 'https://oneforthy.be/';
+   protected $token ='';
+   protected $base_uri = 'https://api.test/';
 
-    public function authenticate($username, $password){
-        $this->username = $username;
-        $this->password = $password;
+    public function authenticate($token){
+        $this->token = $token;
 
         return $this;
+    }
+
+    public function createHandler($url){
+        echo $this->base_uri . $url;
+        $ch = curl_init($this->base_uri . $url);
+        curl_setopt($ch, CURLOPT_HEADER, true);    // we want headers
+
+        curl_setopt($ch,CURLOPT_HTTPHEADER,array (
+            "Accept: application/json",
+            "Content-Type: application/json",
+            'Authorization: Bearer '.$this->token
+        ));
+
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
+        curl_setopt($ch, CURLOPT_TIMEOUT,10);
+        
+        //ONLY ON LOCAL
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+
+        return $ch;
     }
 }

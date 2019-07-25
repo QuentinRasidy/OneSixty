@@ -24,23 +24,10 @@ class SmsTest extends TestCase
 	unset($var);
   }
 
-  public function test_connection(){
-    $var = new Quentinrasidy\Onesixty\Sms;
-
-    $test = $var->authenticate('backend@gmail.com','bibibibi');
-    $this->assertTrue(is_object($test));
-    unset($var);
-  }
-
   public function testSetRecipients(){
     $recipients = [];
 
-    $recipient1 = array(
-      "name" => 'Quentin',
-      "phone" => '0495346512'
-    );
-
-    array_push($recipients,$recipient1);
+    array_push($recipients,'0485346512');
 
     $s = new Quentinrasidy\Onesixty\Sms;
 
@@ -51,82 +38,36 @@ class SmsTest extends TestCase
     unset($var);
   }
 
-  
-
-  public function testGetStatus(){
-    $s = new Quentinrasidy\Onesixty\Sms;
-    try{
-      $this->assertTrue(is_numeric($s->authenticate('xxxxx@gmail.com','xxxxxx')->getStatus(3)));
-    }catch(Quentinrasidy\Onesixty\SmsException $e){
-      $this->assertTrue(false,$e->getMessage());
-    }
-  }
-
-  public function testSendSms(){
+  public function testGetSms(){
     $recipients = [];
 
-    $recipient1 = array(
-      "name" => 'Quentin',
-      "phone" => '0495346512'
-    );
-
-    $recipient2 = array(
-      "name" => 'Gerard',
-      "phone" => '0497442828'
-    );
-
-    array_push($recipients,$recipient1);
-    array_push($recipients,$recipient2);
+    array_push($recipients,'0485346512');
 
     $s = new Quentinrasidy\Onesixty\Sms;
-    try{
-      $this->assertTrue(
-        $s->authenticate('xxxxx@gmail.com','xxxxx')
-        ->setRecipients($recipients)
-        ->setContent('bidzuhdhuduhqdzuzdquhhuhuon')
-        ->send()
-      );
-      
-    }catch(Quentinrasidy\Onesixty\SmsException $e){
-      $this->assertFalse(true,$e->getMessage());
-    }
+
+    $sms = $s->setRecipients($recipients);
+
+    $this->assertTrue($sms->authenticate('n0LPEy1y0GL3nmx7xt2g6xxOLSXqcntiHxCPzjSTgaNEaS9odja2aWYFOVuM')->get(1));
+    
   }
 
-
-  /*
-  ======FAILING TESTS======
-  */
-
-  //Fail recipient
-  public function testFailSetRecipient()
-  {
+  public function testSend(){
     $recipients = [];
 
-    $recipient1 = array(
-      "name" => 'Quentin',
-      "phone" => '04953465512'
-    );
+    array_push($recipients,'0485346512');
 
-    $recipient2 = array(
-      "name" => 'Gerard',
-      "phone" => '0497442828'
-    );
-
-    array_push($recipients,$recipient1);
-    array_push($recipients,$recipient2);
-
-    $s = new Quentinrasidy\Onesixty\Sms;
     try{
-        $s->authenticate('xxxx@gmail.com','xxxx')
-        ->setRecipients($recipients);
-      
+      $s = new Quentinrasidy\Onesixty\Sms;
+      $s = $s
+      ->setContent('this is a super sms content')
+      ->authenticate('n0LPEy1y0GL3nmx7xt2g6xxOLSXqcntiHxCPzjSTgaNEaS9odja2aWYFOVuM')
+      ->send();
+
+      $this->assertTrue(true);
     }catch(Quentinrasidy\Onesixty\SmsException $e){
-      $this->assertFalse(true,$e->getMessage());
+      echo $e->getMessage();
+      $this->assertFalse(true);
     }
-
   }
-
-
-  //Trying to get status of an SMS that does not belong to us
 
 }
