@@ -7,8 +7,7 @@ Upon registration, you have 10 free SMS in order to test this package.
 
 ## Prerequisites
 
-PHP 7.1
-PHP Composer
+Composer
 
 ## Installation
 
@@ -20,7 +19,7 @@ PHP Composer
 3. Authenticate with OneSixty API
 4. Send the SMS
 
-The recipients should be an array, containing a dictionnary with two keys "name" and "phone" :
+The recipients should be an array of belgian phone numbers.
 
 ```php
 $recipients = [];
