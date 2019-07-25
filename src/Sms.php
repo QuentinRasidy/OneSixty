@@ -6,7 +6,7 @@ class Sms extends OneSixtyConnector{
    private $recipients = [];
 
    public function setContent($content){
-        if(count($content) < 10)
+        if(strlen($content) < 10)
             throw new SmsException('You need at least 10 characters');        
 
         $this->content = $content;
@@ -31,7 +31,7 @@ class Sms extends OneSixtyConnector{
    }
    public function get($id){
     //Publish the sms to the onesixty API
-    $ch = $this->createHandler('api/v1/sms/1');
+    $ch = $this->createHandler('api/v1/sms/'.$id);
 
     $output = curl_exec($ch);
     $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);

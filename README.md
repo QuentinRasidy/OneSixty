@@ -32,7 +32,11 @@ try{
     $s = new Quentinrasidy\Onesixty\Sms;
 
     //Set the content; the recipients; authenticate and send
-    $s = $s->setContent('this is a super sms content')->authenticate('n0LPEy1y0GL3nmx7xt2g6xxOLSXqcntiHxCPzjSTgaNEaS9odja2aWYFOVuM')->send();
+    $sms = new Quentinrasidy\Onesixty\Sms;
+    $sms->setRecipients($recipients)
+    ->setContent('this is a super sms content')
+    ->authenticate('mytoken')
+    ->send();
 
 }catch(Quentinrasidy\Onesixty\SmsException $e){
       //Treat the exception here

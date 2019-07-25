@@ -27,7 +27,7 @@ class SmsTest extends TestCase
   public function testSetRecipients(){
     $recipients = [];
 
-    array_push($recipients,'0485346512');
+    array_push($recipients,'0484222222');
 
     $s = new Quentinrasidy\Onesixty\Sms;
 
@@ -39,29 +39,23 @@ class SmsTest extends TestCase
   }
 
   public function testGetSms(){
-    $recipients = [];
-
-    array_push($recipients,'0485346512');
 
     $s = new Quentinrasidy\Onesixty\Sms;
 
-    $sms = $s->setRecipients($recipients);
-
-    $this->assertTrue($sms->authenticate('n0LPEy1y0GL3nmx7xt2g6xxOLSXqcntiHxCPzjSTgaNEaS9odja2aWYFOVuM')->get(1));
+    $this->assertTrue($s->authenticate('mytoken')->get(1));
     
   }
 
   public function testSend(){
     $recipients = [];
 
-    array_push($recipients,'0482234222');
-    array_push($recipients,'0492845355');
+    array_push($recipients,'0485666666');
 
     try{
-      $s = new Quentinrasidy\Onesixty\Sms;
-      $s = $s
+      $sms = new Quentinrasidy\Onesixty\Sms;
+      $sms->setRecipients($recipients)
       ->setContent('this is a super sms content')
-      ->authenticate('n0LPEy1y0GL3nmx7xt2g6xxOLSXqcntiHxCPzjSTgaNEaS9odja2aWYFOVuM')
+      ->authenticate('mytoken')
       ->send();
 
       $this->assertTrue(true);
