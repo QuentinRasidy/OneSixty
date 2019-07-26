@@ -4,7 +4,7 @@
 class OneSixtyConnector{
 
    protected $token ='';
-   protected $base_uri = 'https://oneforthy.be/';
+   protected $base_uri = 'https://api.test/';
 
     public function authenticate($token){
         $this->token = $token;
@@ -15,7 +15,7 @@ class OneSixtyConnector{
     public function createHandler($url){
         echo $this->base_uri . $url;
         $ch = curl_init($this->base_uri . $url);
-        curl_setopt($ch, CURLOPT_HEADER, true);    // we want headers
+        //curl_setopt($ch, CURLOPT_HEADER, true);    // we want headers
 
         curl_setopt($ch,CURLOPT_HTTPHEADER,array (
             "Accept: application/json",
@@ -27,8 +27,8 @@ class OneSixtyConnector{
         curl_setopt($ch, CURLOPT_TIMEOUT,10);
         
         //ONLY ON LOCAL
-        //curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
-        //curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 
         return $ch;
     }
