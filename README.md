@@ -65,7 +65,7 @@ foreach($results as $result){
 ```
 
 The var_dump method will display the following result : 
-````
+```
 {
   ["id"]=>
   int(58)
