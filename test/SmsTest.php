@@ -42,21 +42,26 @@ class SmsTest extends TestCase
 
     $s = new Quentinrasidy\Onesixty\Sms;
 
-    $this->assertTrue($s->authenticate('mytoken')->get(1));
+    $this->assertTrue($s->authenticate('n0LPEy1y0GL3nmx7xt2g6xxOLSXqcntiHxCPzjSTgaNEaS9odja2aWYFOVuM')->get(1));
     
   }
 
   public function testSend(){
     $recipients = [];
 
-    array_push($recipients,'0485666666');
+    array_push($recipients,'0492234222');
+    array_push($recipients,'0492845355');
 
     try{
       $sms = new Quentinrasidy\Onesixty\Sms;
-      $sms->setRecipients($recipients)
+      $results = $sms->setRecipients($recipients)
       ->setContent('this is a super sms content')
-      ->authenticate('mytoken')
+      ->authenticate('n0LPEy1y0GL3nmx7xt2g6xxOLSXqcntiHxCPzjSTgaNEaS9odja2aWYFOVuM')
       ->send();
+
+      foreach($results as $result){
+        var_dump($result);
+      }
 
       $this->assertTrue(true);
     }catch(Quentinrasidy\Onesixty\SmsException $e){

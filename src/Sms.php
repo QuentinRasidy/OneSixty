@@ -52,14 +52,14 @@ class Sms extends OneSixtyConnector{
 
     curl_setopt($ch,CURLOPT_POST,true);
     curl_setopt($ch,CURLOPT_POSTFIELDS,json_encode($data));
-
+    //curl_setopt($ch, CURLOPT_VERBOSE, true);
     $output = curl_exec($ch);
     $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     
     curl_close($ch);
-
+    //var_dump($output);
     if($httpcode == 200)
-        return true;
+        return json_decode($output,true);
     else
         throw new SmsException($output);
    }
