@@ -56,7 +56,7 @@ class SmsTest extends TestCase
       $sms = new Quentinrasidy\Onesixty\Sms;
       $results = $sms->setRecipients($recipients)
       ->setContent('this is a super sms content')
-      ->authenticate('n0LPEy1y0GL3nmx7xt2g6xxOLSXqcntiHxCPzjSTgaNEaS9odja2aWYFOVuM')
+      ->authenticate('QbUzkjR738N1jVCWJfgOHS9JbtgMg4FT1JA6vEXLo88tcFQnEBLu8OeEwZeI')
       ->send();
 
       foreach($results as $result){

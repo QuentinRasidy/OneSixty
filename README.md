@@ -22,7 +22,7 @@ Composer
 
 The recipients should be an array of belgian phone numbers.
 
-### Example
+### Sending
 
 ```php
 $recipients = [];
@@ -91,6 +91,28 @@ array(4) {
 Therefore, you can store the IDs of the SMS that you have sent. This will allow you to get their status later on, for example. 
 
 Also, you can notice that the numbers have been translated to E.169 format. 
+
+### Callbacks
+You can get callbacks for every new SMS states. 
+You need to set a callback URL on the [Website](https://oneforthy.be) under the "developpers" page. 
+
+If we keep the example above, two SMSes were created, with ID 58 and 59. 
+
+If the SMSes are successfully sent, the API will send an HTTP PUT request to your callback URL with the following data : 
+
+```
+[{"id":58,"status":"1"},{"id":59,"status":"1"}]
+```
+
+### Status
+Those are the possible status for SMSes : 
+
+0. TO_SEND => Your SMS has been stored, we need to send it. 
+1. SENT => Your SMS has been sent to the recipient.
+2. HANDLED => Your SMS has been handled by our backend.
+5. ERROR => There was an error with that SMS.
+6. CANCELLED => You have cancelled this SMS via the DELETE method.
+
 ## Authors
 
 [Quentin Rasidy](https://www.linkedin.com/in/quentinrasidy/)
