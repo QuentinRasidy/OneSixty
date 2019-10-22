@@ -1,4 +1,4 @@
-<?php namespace Quentinrasidy\Onesixty;
+<?php 
 
 /*  @author Quentin Rasidy*/
 class OneSixtyConnector{
@@ -13,7 +13,6 @@ class OneSixtyConnector{
     }
 
     public function createHandler($url){
-        echo $this->base_uri . $url;
         $ch = curl_init($this->base_uri . $url);
 
         curl_setopt($ch,CURLOPT_HTTPHEADER,array (

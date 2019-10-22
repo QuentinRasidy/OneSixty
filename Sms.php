@@ -1,4 +1,4 @@
-<?php namespace Quentinrasidy\Onesixty;
+<?php
 
 class Sms extends OneSixtyConnector{
 
